@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var speed = 300  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window.
-var velocity = Vector2()
+
 func _ready():
 	screen_size = get_viewport_rect().size
 
