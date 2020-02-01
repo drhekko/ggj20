@@ -3,15 +3,13 @@ extends Node2D
 export var speed = 300
 var screen_size  # Size of the game window.
 
-<<<<<<< HEAD:ggj20/Player/Player.gd
+
 var velocity = Vector2()
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
-=======
->>>>>>> 106cbffe95f5641d515f2719f32b6c433cbe9474:ggj20/Player.gd
 func _ready():
 	screen_size = get_viewport_rect().size
 

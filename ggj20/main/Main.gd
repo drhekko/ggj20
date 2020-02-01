@@ -11,8 +11,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-func _process(delta):
-	if Globalvar.item_selected != '':
-		$Player/selected_object.texture = load('')
-		add_child($Object)
