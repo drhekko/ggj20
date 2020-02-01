@@ -12,6 +12,7 @@ func _on_Timer_timeout():
 
 func game_over():
 	$Player.player_dead()
+	get_tree().change_scene("res://Game_Over/GameOverScreen.tscn")
 	
 func life():
 	print(int($Timer.time_left))

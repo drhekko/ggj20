@@ -58,7 +58,6 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="GUI" type="MarginContainer" parent="CanvasLayer"]
