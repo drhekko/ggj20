@@ -1,29 +1,50 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/Main.gd" type="Script" id=1]
-[ext_resource path="res://main/Player.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://main/Abono.gd" type="Script" id=4]
-[ext_resource path="res://assets/abono.jpg" type="Texture" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31, 31 )
+[ext_resource path="res://main/Abono.gd" type="Script" id=2]
+[ext_resource path="res://assets/abono.jpg" type="Texture" id=3]
+[ext_resource path="res://main/Player.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://main/CanvasLayer.gd" type="Script" id=6]
+[ext_resource path="res://Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/lifebar_bg.png" type="Texture" id=8]
+[ext_resource path="res://assets/lifebar_fill.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 19, 19 )
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31, 31 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 7 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 474.802, 343.795 )
+[node name="Abono" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 480.614, 149.817 )
 script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Abono"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Abono"]
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 3 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 474.802, 343.795 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="Selected_object" type="Sprite" parent="Player"]
 position = Vector2( 0, -75 )
@@ -36,26 +57,56 @@ shape = SubResource( 1 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Timer" type="Timer" parent="Player"]
-wait_time = 10.0
-
-[node name="Abono" type="Area2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
-position = Vector2( 480.614, 149.817 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Abono"]
-shape = SubResource( 2 )
+[node name="GUI" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_right = 552.0
+margin_bottom = 93.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 
-[node name="Sprite" type="Sprite" parent="Abono"]
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 5 )
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1556.0
+margin_bottom = 73.0
 
-[node name="Label" type="Label" parent="."]
-margin_left = 646.976
-margin_top = 448.312
-margin_right = 695.976
-margin_bottom = 462.312
-text = "xxxxxxx"
-clip_text = true
-[connection signal="timeout" from="Player/Timer" to="Player" method="_on_Timer_timeout"]
+[node name="bars" type="VBoxContainer" parent="CanvasLayer/GUI/HBoxContainer"]
+margin_right = 508.0
+margin_bottom = 53.0
+
+[node name="bar" type="HBoxContainer" parent="CanvasLayer/GUI/HBoxContainer/bars"]
+margin_right = 508.0
+margin_bottom = 53.0
+
+[node name="Number" type="Label" parent="CanvasLayer/GUI/HBoxContainer/bars/bar"]
+margin_top = 11.0
+margin_right = 108.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 3 )
+text = "OXYGEN"
+align = 1
+
+[node name="Gauge" type="TextureProgress" parent="CanvasLayer/GUI/HBoxContainer/bars/bar"]
+margin_left = 112.0
+margin_right = 508.0
+margin_bottom = 53.0
+max_value = 300.0
+step = 10.0
+value = 300.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 300.0
+autostart = true
+
+[node name="1seg" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="1seg" to="." method="_on_1seg_timeout"]

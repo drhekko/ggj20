@@ -38,10 +38,5 @@ func _process(delta):
 		print('res://assets/'+Globalvar.item_selected+'.jpg')
 		$selected_object.texture = load('res://assets/'+Globalvar.item_selected+'.jpg')
 
-func _on_Timer_timeout():
-	$Timer.stop()
-	game_over()
-	
-func game_over():
-	print("i died cause i was slow")
-
+func player_dead():
+	print("Tas muelto")
