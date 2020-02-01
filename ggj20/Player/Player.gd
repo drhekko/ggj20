@@ -2,7 +2,6 @@ extends Node2D
 
 export var speed = 300
 var screen_size  # Size of the game window.
-var item_select = ''
 
 var velocity = Vector2()
 # Declare member variables here. Examples:
@@ -11,13 +10,13 @@ var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
-	var PlayerReference = $Player
+	screen_size = get_viewport_rect().size
 
 	
 func _process(delta):
 	var velocity = Vector2() #the player movement vector
-
+	print('item actual: ' + Globalvar.item_selected)
+			
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -29,14 +28,12 @@ func _process(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 			
-
+	position += velocity * delta
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
 	position += velocity * delta
 	
-	if self.item_select != '':
+	if Globalvar.item_selected != '':
 		#res://assets/abono.jpg
-		if Input.is_action_just_pressed("ui_select"):
-			
-			$selected_object.texture = load('res://assets/'+self.item_select+'.jpg')
-
-func player_dead():
-	print("Tas muelto")
+		print('res://assets/'+Globalvar.item_selected+'.jpg')
+		$selected_object.texture = load('res://assets/'+Globalvar.item_selected+'.jpg')
