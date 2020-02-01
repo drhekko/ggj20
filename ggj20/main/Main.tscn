@@ -16,7 +16,7 @@ extents = Vector2( 19, 19 )
 script = ExtResource( 1 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-editor/display_folded = true
+position = Vector2( 474.802, 343.795 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -27,13 +27,21 @@ texture = ExtResource( 3 )
 
 [node name="Selected_object" type="Sprite" parent="Player"]
 position = Vector2( 0, -75 )
-scale = Vector2( 0.05, 0.05 )
+scale = Vector2( 0.01, 0.01 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 10.0
+
 [node name="Abono" type="Area2D" parent="."]
-position = Vector2( 290, 98 )
+editor/display_folded = true
+position = Vector2( 480.614, 149.817 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Abono"]
@@ -42,3 +50,4 @@ shape = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="Abono"]
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 5 )
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_Timer_timeout"]

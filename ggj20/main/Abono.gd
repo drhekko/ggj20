@@ -6,7 +6,7 @@ extends Area2D
 var Globalvar
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Globalvar = get_tree().get_root().get_node("/root/Globalvar")
+		Globalvar = get_tree().get_root().get_node("/root/Globalvar")
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select"):

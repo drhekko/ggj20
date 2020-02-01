@@ -12,12 +12,11 @@ var velocity = Vector2()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-
+	
 	
 func _process(delta):
 	var velocity = Vector2() #the player movement vector
-	print('item actual: ' + Globalvar.item_selected)
-			
+
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -38,3 +37,11 @@ func _process(delta):
 		#res://assets/abono.jpg
 		print('res://assets/'+Globalvar.item_selected+'.jpg')
 		$selected_object.texture = load('res://assets/'+Globalvar.item_selected+'.jpg')
+
+func _on_Timer_timeout():
+	$Control/Timer.stop()
+	game_over()
+	
+func game_over():
+	print("i died cause i was slow")
+
