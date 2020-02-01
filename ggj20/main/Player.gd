@@ -39,7 +39,7 @@ func _process(delta):
 		$selected_object.texture = load('res://assets/'+Globalvar.item_selected+'.jpg')
 
 func _on_Timer_timeout():
-	$Control/Timer.stop()
+	$Timer.stop()
 	game_over()
 	
 func game_over():

@@ -50,4 +50,12 @@ shape = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="Abono"]
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 646.976
+margin_top = 448.312
+margin_right = 695.976
+margin_bottom = 462.312
+text = "xxxxxxx"
+clip_text = true
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_Timer_timeout"]
