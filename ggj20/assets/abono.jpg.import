@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/igor2.png-e3e3304dc7adbcfd361ad8e82b6be7a8.stex"
+path="res://.import/abono.jpg-eac4cb8a9633d921d722fee4b1049d59.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/igor2.png"
-dest_files=[ "res://.import/igor2.png-e3e3304dc7adbcfd361ad8e82b6be7a8.stex" ]
+source_file="res://assets/abono.jpg"
+dest_files=[ "res://.import/abono.jpg-eac4cb8a9633d921d722fee4b1049d59.stex" ]
 
 [params]
 

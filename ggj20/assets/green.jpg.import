@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/igor.png-a3aa5ca36d5037c26ea38f9601156030.stex"
+path="res://.import/green.jpg-aae58073ecb82de7349487cb1e46ccf0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/igor.png"
-dest_files=[ "res://.import/igor.png-a3aa5ca36d5037c26ea38f9601156030.stex" ]
+source_file="res://assets/green.jpg"
+dest_files=[ "res://.import/green.jpg-aae58073ecb82de7349487cb1e46ccf0.stex" ]
 
 [params]
 

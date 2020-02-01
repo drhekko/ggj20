@@ -1,13 +1,22 @@
-extends KinematicBody2D
+extends Node2D
 
-export var speed = 300  # How fast the player will move (pixels/sec).
+export var speed = 300
 var screen_size  # Size of the game window.
+
 var velocity = Vector2()
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 
+	
 func _process(delta):
 	var velocity = Vector2() #the player movement vector
+	print('item actual: ' + Globalvar.item_selected)
+			
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -18,16 +27,13 @@ func _process(delta):
 		velocity.y -= 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.stop()
-	
+			
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 	position += velocity * delta
 	
-	if velocity.x != 0:
-		$AnimatedSprite.animation = "right"
-		$AnimatedSprite.flip_v = false
-		$AnimatedSprite.flip_h = velocity.x < 0
+	if Globalvar.item_selected != '':
+		#res://assets/abono.jpg
+		print('res://assets/'+Globalvar.item_selected+'.jpg')
+		$selected_object.texture = load('res://assets/'+Globalvar.item_selected+'.jpg')
