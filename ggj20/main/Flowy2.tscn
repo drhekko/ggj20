@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/flowy/flowy lv2.png" type="Texture" id=1]
+[ext_resource path="res://assets/flowy/flowy lv2 (2).png" type="Texture" id=2]
+[ext_resource path="res://assets/flowy/flowy lv2 (1).png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16.4499, 19.9593 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "lvl_two",
+"speed": 5.0
+} ]
+
+[node name="Flowy2" type="Area2D"]
+scale = Vector2( 3, 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.03, 0.03 )
+frames = SubResource( 2 )
+animation = "lvl_two"
+frame = 1
+playing = true
